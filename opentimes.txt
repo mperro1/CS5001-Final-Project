@@ -1,0 +1,3 @@
+Password: abc, Time Taken: 0.26s, Average Time per Character: 0.09s
+Password: abce, Time Taken: 1.75s, Average Time per Character: 0.44s
+Password: ab, Time Taken: 0.18s, Average Time per Character: 0.09s
