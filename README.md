@@ -33,10 +33,36 @@ For each combination, the function joins the characters together (guessed_passwo
 It then checks if this string is the same as the target_password. If it is, the function stops and returns this guessed password. 
 
 3. Data Collection and Analysis:
+Data Collection: 
+- The function password_guess_worker takes a target_password as an argument. This is the password that the program attempts to crack. It's not clear from the snippet how this target password is obtained; it might be input by the user or derived from another source. 
+- Characters Set: The characters argument represents a string of all possible characters used in the password guessing process. This could include letters, numbers, and special characters.
+- Password Length: The length argument specifies the length of the password combinations that the program will try.
 
+Data Analysis and Processing: 
+- Combination Generation: The program uses itertools.product to generate all possible combinations of the given characters up to the specified length. This method is exhaustive, ensuring that every possible combination is considered.
+- Parallel Processing: The script is designed to work in a multiprocessing context, allowing multiple instances of the password_guess_worker function to run in parallel. This significantly speeds up the brute force process by simultaneously trying different combinations.
+- Comparison and Result Handling: As combinations are generated, each is compared against the target password. If a match is found, the guessed password is placed into a multiprocessing queue. This queue serves as a mechanism for communicating the successful guess back to the main process or thread.
+- The function track_and_record_guess_time(target_password: str) is designed to measure and record the performance of the password guessing process in your brute force cracker program. Here's a detailed breakdown of how this function works:
 
-Collect data on password strengths and corresponding guessing times.
-Analyze data to find correlations between password complexity and time required for guessing.
+```python
+start_time = time.time()
+    guessed_password = password_guesser(target_password)
+    end_time = time.time()
+
+    time_taken = end_time - start_time
+    avg_time_per_char = time_taken / len(target_password)
+
+    with open('opentimes.txt', 'a') as file:
+        file.write(f"Password: {target_password}, Time Taken: {time_taken:.2f}s, Average Time per Character: {avg_time_per_char:.2f}s\n")
+
+    return guessed_password, time_taken, avg_time_per_char
+```
+The function records the current time before starting the password guessing process. This is the "start time" for the operation. The password_guesser function runs the brute force algorithm and returns the guessed password once it's found. After the password is guessed, the function records the current time again. This is the "end time" for the operation. The function calculates the total time taken to guess the password by subtracting the start time from the end time. The function computes the average time taken to guess each character of the password. This is done by dividing the total time taken by the length of the target password. The function opens (or creates if it doesn't exist) the file opentimes.txt in append mode.
+It writes a line containing the target password, the total time taken to guess it, and the average time per character. The format is: "Password: [password], Time Taken: [total time]s, Average Time per Character: [average time]s\n". 
+
+Finally, the function returns a tuple containing the guessed password, the total time taken to guess it, and the average time per character. This allows other parts of the program to access these results if needed.
+
+The recording of this data in opentimes.txt allows for a historical record of the algorithm's performance, useful for analysis, optimization, and documentation purposes. 
 ## Key Features
 Highlight some key features of this project that you want to show off/talk about/focus on. 
 
