@@ -1,0 +1,13 @@
+Password: abc, Time Taken: 0.29s, Average Time per Character: 0.10s, Average Time per Length: 0.05s
+Password: abc, Time Taken: 0.25s, Average Time per Character: 0.08s, Average Time per Length: 0.04s
+Password: abc, Time Taken: 0.26s, Average Time per Character: 0.09s, Average Time per Length: 0.04s
+Password: abc, Time Taken: 0.28s, Average Time per Character: 0.09s, Average Time per Length: 0.05s
+Password: abc, Time Taken: 0.27s, Average Time per Character: 0.09s, Average Time per Length: 0.05s
+Password: abc, Time Taken: 0.26s, Average Time per Character: 0.09s, Average Time per Length: 0.04s
+Password: abc, Time Taken: 0.26s, Average Time per Character: 0.09s, Average Time per Length: 0.04s
+Password: abc, Time Taken: 0.43s, Average Time per Character: 0.14s, Average Time per Length: 0.07s
+Password: abc, Time Taken: 0.31s, Average Time per Character: 0.10s, Average Time per Length: 0.05s
+Password: P!!, Time Taken: 18.71s, Average Time per Character: 6.24s, Average Time per Length: 3.12s
+Password: 3, Time Taken: 0.14s, Average Time per Character: 0.14s, Average Time per Length: 0.14s
+Password: abc, Time Taken: 0.25s, Average Time per Character: 0.08s, Average Time per Length: 0.04s
+Password: ab, Time Taken: 0.18s, Average Time per Character: 0.09s, Average Time per Length: 0.06s

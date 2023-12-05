@@ -13,7 +13,7 @@ import string
 import itertools
 from password_generator import generate_password
 import multiprocessing
-import time
+import time 
 
 
 ACTION_GENERATE = "generate"
@@ -44,12 +44,14 @@ def password_guess_worker(target_password: str, characters: str, length, queue):
         This function prints each guessed password to the standard output, which can be useful for debugging
         but may slow down the execution if the output volume is large.
     """
+
     for guess in itertools.product(characters, repeat=length):
         guessed_password = ''.join(guess)
         print(guessed_password)  # Add this line to print each guess
         if guessed_password == target_password:
             queue.put(guessed_password)
             return
+
 
 def password_guesser(target_password: str):
     """
@@ -117,12 +119,13 @@ def track_and_record_guess_time(target_password: str):
     end_time = time.time()
 
     time_taken = end_time - start_time
-    avg_time_per_char = time_taken / len(target_password)
+    password_length = len(target_password)
+    avg_time_per_char = time_taken / password_length
+    avg_time_per_length = time_taken / (password_length * (password_length + 1) / 2 ) #  Average time per length
+    with open('runtimes.txt', 'a') as file:
+        file.write(f"Password: {target_password}, Time Taken: {time_taken:.2f}s, Average Time per Character: {avg_time_per_char:.2f}s, Average Time per Length: {avg_time_per_length:.2f}s\n")
 
-    with open('opentimes.txt', 'a') as file:
-        file.write(f"Password: {target_password}, Time Taken: {time_taken:.2f}s, Average Time per Character: {avg_time_per_char:.2f}s\n")
-
-    return guessed_password, time_taken, avg_time_per_char
+    return guessed_password, time_taken, avg_time_per_char, avg_time_per_length
 
 
 def main(action: str, length: str = DEFAULT_LENGTH, target_password: str = None):
@@ -159,13 +162,13 @@ def main(action: str, length: str = DEFAULT_LENGTH, target_password: str = None)
         elif target_password == "":
             print("Target password has not been provided")
         else: 
-            guessed_password, time_taken, avg_time_per_char = track_and_record_guess_time(target_password)
+            guessed_password, time_taken, avg_time_per_char, avg_time_per_length = track_and_record_guess_time(target_password)
             print(f"Password guess is {guessed_password}")
             print(f"Total Execution time: {time_taken} seconds")
             print(f"Average time per character: {avg_time_per_char} seconds")
+            print(f"Average time per length: {avg_time_per_length} seconds")
 
 
-#Work on command prompt 
 if __name__ == "__main__":
     print(f"Command line arguments: {sys.argv}")
     _action = ''
