@@ -146,6 +146,7 @@ def main(action: str, length: str = DEFAULT_LENGTH, target_password: str = None)
     Returns:
         None: The function does not return anything but prints the generated or guessed password.
     """
+    print(f"Action: {action}, Length: {length}, Target Password: {target_password}")
     if action == '':
         print("You must enter a command. Available commands: guess, generate")
     elif action == ACTION_GENERATE:
@@ -156,6 +157,7 @@ def main(action: str, length: str = DEFAULT_LENGTH, target_password: str = None)
         generate_pass = generate_password(length_int)
         print(f"Generated password= {generate_pass}")
     elif action == ACTION_GUESS:
+        print("Starting password guessing...")
         if not target_password:
             print("Target password has not been provided")
         elif target_password == "":
@@ -169,6 +171,7 @@ def main(action: str, length: str = DEFAULT_LENGTH, target_password: str = None)
 
 
 if __name__ == "__main__":
+    print(f"Command line arguments: {sys.argv}")
     _action = ''
     _length = ''
     _target_password = ''
