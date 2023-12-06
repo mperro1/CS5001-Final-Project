@@ -207,7 +207,7 @@ Error: Target password should not contain spaces.
 ```
 
 ## Testing
-brute_force_cracker_test_file.txt
+[Brute Force Test File](brute_force_cracker_test_file.txt)
 ## Missing Features / What's Next
 ### Optimization of Guessing/Cracking Algorithm:
 - Dictionary Attack Integration: Before resorting to pure brute-force, use a dictionary of common passwords to attempt quicker matches.
@@ -216,3 +216,7 @@ brute_force_cracker_test_file.txt
 - Pattern-Based Guessing: Implement pattern recognition to guess passwords based on common structures (e.g., "name + year").
 ## Final Reflection
 My experience in this course has been both challenging and rewarding. The journey started with learning the basics of Python syntax and its core concepts, such as variables, data types, loops, and functions. One of the most exciting parts was diving into more advanced topics like file handling, error and exceptions, and especially multiprocessing, which opened my eyes to Python's capabilities in handling complex tasks efficiently. The final project was particularly enlightening. It not only consolidated my understanding of Python's syntax and logic but also introduced me to real-world applications of the language. Through this project, I learned how to manage multiple processes and the importance of efficient data handling between these processes using tools like multiprocessing queues. . This course has laid a strong foundation for my journey in Python programming, and I'm excited to explore its vast potential in the tech world.
+
+<!-- auto references -->
+[File Description]: File Link
+[Brute Force Test File]: brute_force_cracker_test_file.txt
