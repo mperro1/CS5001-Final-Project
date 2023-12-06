@@ -123,6 +123,9 @@ def password_guesser(target_password):
 ```
 This version was very slow. I had to manually stop my program from running because it would take over 20 minutes to crack a password with more than 3 characters. (see test runs)
 
+### Password length vs password complexity: 
+From my test runs, the length of password had longer runtime than password complexity (use of symbols). 
+
 ## Example Runs
 ### Example Run 1: Cracking a simple password 
 Input:
@@ -149,43 +152,62 @@ Average time per character: 6.237696568171184 seconds
 Average time per length: 3.118848284085592 seconds
 ```
 ### Example Run 3: Cracking a password and inputting the length 
+If length is not an integer value it will be disregarded. Program will focus on target_password as second argument always when action == guess
 Input: 
 ```bash
  python brute_force_cracker.py --guess 'ab' '2'
 ```
-Expected output: 
+Expected output:
+```bash
 Password guess is ab
 Total Execution time: 0.1831216812133789 seconds
 Average time per character: 0.09156084060668945 seconds
 Average time per length: 0.06104056040445963 seconds
+```
 ### Example Run 4: Failure to Crack Due to Length Limit
 Input: 
 ```bash
  python brute_force_cracker.py -gs "VeryLongPassword123!"
 ```
 Expected output: 
-Ctrl + c "Keyboard interrupt 
+```bash
+Ctrl + c "Keyboard interrupt. (Password will take forever!)
+```
 ### Example Run 5: Generating a password 
+Input 1:
 ```bash
   python brute_force_cracker.py -g '8'
 ```
-Expected output: 
+Expected output:
+```bash
 Generated password= ABPq%hOO
+```
+Input 2: If length is not entered program will default to DEFAULT_LENGTH = 8 characters 
+```bash
+  python brute_force_cracker.py -g
+```
+Expected output:
+```bash
+Generated password= :}#i&nlP
+```
 ### Example Run 6: Guessing a password and making sure runtime.txt file is generated with all the above runs 
 Input:
 ```bash
 python brute_force_cracker.py -gs "abc"
 ```
 Expected Output:
-
-![Alt text](run_times_ss-1.png)
+Link to runtimes file 
+### Example Run 7: Testing target_password with spaces 
+Input: 
+```bash
+python brute_force_cracker.py -gs "a c"
+```
+```bash
+Error: Target password should not contain spaces.
+```
 
 ## Testing
-How did you test your code? What did you do to make sure your code was correct? If you wrote unit tests, you can link to them here. If you did run tests, make sure you document them as text files, and include them in your submission. 
-link test run file 
-
-> _Make it easy for us to know you *ran the project* and *tested the project* before you submitted this report!_
-
+See test file 
 ## Missing Features / What's Next
 ### Optimization of Guessing/Cracking Algorithm:
 - Dictionary Attack Integration: Before resorting to pure brute-force, use a dictionary of common passwords to attempt quicker matches.

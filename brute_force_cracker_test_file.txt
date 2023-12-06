@@ -1,0 +1,151 @@
+# Final Project Test File
+
+* Student Name: Marcela Perro
+* Github Username: mperro1
+* Semester: Fall 2023
+* Course: CS5001
+
+1. Testing password_guesser function 
+Input: password_guesser(target_password= 'abc') 
+Output = 'abc'
+
+2. Testing password generation in vs code terminal: 
+if __name__ == "__main__":
+    print(f"Command line arguments: {sys.argv}")
+    _action = 'generate'
+    _length = '5'
+    _target_password = ''
+    if len(sys.argv) > 1:
+        if sys.argv[1] == '-gs' or sys.argv[1] == '--guess':
+            _action = ACTION_GUESS
+            if len(sys.argv) > 2:
+                _target_password = sys.argv[2]
+        elif sys.argv[1] == '-g' or sys.argv[1] == '--generate':
+            _action = ACTION_GENERATE
+            if len(sys.argv) > 2:
+                _length = sys.argv[2]
+                if len(sys.argv) > 3:
+                    _target_password = sys.argv[3]
+
+    main(_action, _length, _target_password)
+
+Output: Generated password= /u;yX
+
+3. Testing DEFAULT_LENGTH for password generation: 
+if __name__ == "__main__":
+    print(f"Command line arguments: {sys.argv}")
+    _action = 'generate'
+    _length = ''
+    _target_password = ''
+    if len(sys.argv) > 1:
+        if sys.argv[1] == '-gs' or sys.argv[1] == '--guess':
+            _action = ACTION_GUESS
+            if len(sys.argv) > 2:
+                _target_password = sys.argv[2]
+        elif sys.argv[1] == '-g' or sys.argv[1] == '--generate':
+            _action = ACTION_GENERATE
+            if len(sys.argv) > 2:
+                _length = sys.argv[2]
+                if len(sys.argv) > 3:
+                    _target_password = sys.argv[3]
+
+    main(_action, _length, _target_password)
+
+Output: 
+Generated password= Myxse}PD
+
+4. Running with empty "" 
+Output: You must enter a command. Available commands: guess, crack, generate
+
+5. Guessing without a target password
+if __name__ == "__main__":
+    print(f"Command line arguments: {sys.argv}")
+    _action = 'guess'
+    _length = ''
+    _target_password = ''
+    if len(sys.argv) > 1:
+        if sys.argv[1] == '-gs' or sys.argv[1] == '--guess':
+            _action = ACTION_GUESS
+            if len(sys.argv) > 2:
+                _target_password = sys.argv[2]
+        elif sys.argv[1] == '-g' or sys.argv[1] == '--generate':
+            _action = ACTION_GENERATE
+            if len(sys.argv) > 2:
+                _length = sys.argv[2]
+                if len(sys.argv) > 3:
+                    _target_password = sys.argv[3]
+
+    main(_action, _length, _target_password)
+
+Output: Target password has not been provided
+
+6. Guessing password 'abc' 
+if __name__ == "__main__":
+    print(f"Command line arguments: {sys.argv}")
+    _action = 'guess'
+    _length = ''
+    _target_password = 'abc'
+    if len(sys.argv) > 1:
+        if sys.argv[1] == '-gs' or sys.argv[1] == '--guess':
+            _action = ACTION_GUESS
+            if len(sys.argv) > 2:
+                _target_password = sys.argv[2]
+        elif sys.argv[1] == '-g' or sys.argv[1] == '--generate':
+            _action = ACTION_GENERATE
+            if len(sys.argv) > 2:
+                _length = sys.argv[2]
+                if len(sys.argv) > 3:
+                    _target_password = sys.argv[3]
+
+    main(_action, _length, _target_password)
+
+Output: 
+(list of passwords...)
+aa~
+d9
+aba
+d!
+abb
+d"
+abc
+d#
+d$
+d%
+d&
+d'
+d(
+d)
+Password guess is abc
+Total Execution time: 0.38224029541015625 seconds
+Average time per character: 0.1274134318033854 seconds
+Average time per length: 0.0637067159016927 seconds
+
+7. Testing in command prompt terminal: 
+Input: python brute_force_cracker.py -gs "abc"
+Output: 
+Password guess is abc
+Total Execution time: 0.3105583190917969 seconds
+Average time per character: 0.10351943969726562 seconds
+Average time per length: 0.05175971984863281 seconds
+
+Input: python brute_force_cracker.py 's'
+Output: You must enter a command. Available commands: guess, generate
+
+8. Testing Command-line interface: 
+Input:  python brute_force_cracker.py --generate 10 mypassword
+Output and debugging statement to check argument placement
+Generated password= DEdXOmD8wa
+Action: generate, Length: 10, Target Password: mypassword
+
+9. Testing edge case when target password includes a space 
+Input:  python brute_force_cracker.py -gs 'a c'
+Output: Error: Target password should not contain spaces.
+
+10: Testing if command line disregards 3 argument entered when guessing if its not an int, and takes 3rd value as length 
+Input: python brute_force_cracker.py -gs a c
+Output: 
+a
+Password guess is a
+Total Execution time: 0.12563300132751465 seconds
+Average time per character: 0.12563300132751465 seconds
+Average time per length: 0.12563300132751465 seconds
