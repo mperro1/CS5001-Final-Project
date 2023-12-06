@@ -207,7 +207,7 @@ Error: Target password should not contain spaces.
 ```
 
 ## Testing
-See test file 
+brute_force_cracker_test_file.txt
 ## Missing Features / What's Next
 ### Optimization of Guessing/Cracking Algorithm:
 - Dictionary Attack Integration: Before resorting to pure brute-force, use a dictionary of common passwords to attempt quicker matches.
