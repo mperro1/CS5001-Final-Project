@@ -149,3 +149,38 @@ Password guess is a
 Total Execution time: 0.12563300132751465 seconds
 Average time per character: 0.12563300132751465 seconds
 Average time per length: 0.12563300132751465 seconds
+
+11. Testing generate_password function 
+Input: generate_password(length = 12)
+Output: '\'AMPf"RlFiYv'
+
+12. Testing password_guess_worker: 
+Input: password_guess_worker(target_password= 'hi', characters= 'string.ascii_letters + string.digits + string.punctuation', length= 2, queue= '')
+Output: ss
+st
+sr
+si
+sn
+sg
+s.
+sa
+ss
+sc
+si
+si
+s_
+sl
+se
+st
+st
+se
+sr
+ss
+s 
+s+ (and so on)
+
+13. Testing track_and_record_guess_time 
+Input: track_and_record_guess_time(target_password= 'ab')
+Output: clock in interactive window
+
+14. 

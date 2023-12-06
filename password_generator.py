@@ -8,7 +8,8 @@ SEMESTER: FALL 2023
 import random
 import string
 
-def generate_password(length=12):
+
+def generate_password(length:int):
     """
     Generates a random password.
 

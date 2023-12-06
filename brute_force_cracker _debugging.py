@@ -44,6 +44,7 @@ def password_guess_worker(target_password: str, characters: str, length, queue):
         This function prints each guessed password to the standard output, which can be useful for debugging
         but may slow down the execution if the output volume is large.
     """
+
     for guess in itertools.product(characters, repeat=length):
         guessed_password = ''.join(guess)
         print(guessed_password)  # Add this line to print each guess
@@ -148,37 +149,23 @@ def main(action: str, length: str = DEFAULT_LENGTH, target_password: str = None)
     Returns:
         None: The function does not return anything but prints the generated or guessed password.
     """
-    try:
-        # Check to ensure target_password does not contain spaces
-        if ' ' in target_password:
-            raise ValueError("Target password should not contain spaces.")
-    except ValueError as e:
-        print("Error:", e)
-        return
+    print(
+        f"Action: {action}, Length: {length}, Target Password: {target_password}")
     if action == '':
         print("You must enter a command. Available commands: guess, generate")
     elif action == ACTION_GENERATE:
         action = action.lower()
         if not length or length == '':
             length = DEFAULT_LENGTH
-        try:
-            # Ensure length is an integer for 'generate' action
-            length_int = int(length)
-        except ValueError:
-            print("Error: Length must be an integer for generating a password.")
-            return
+        length_int = int(length)
         generate_pass = generate_password(length_int)
         print(f"Generated password= {generate_pass}")
     elif action == ACTION_GUESS:
+        print("Starting password guessing...")
         if not target_password:
             print("Target password has not been provided")
         elif target_password == "":
             print("Target password has not been provided")
-            try:
-                length_int = int(length)
-            except ValueError:
-                print("Non-integer length entered. Ignoring length for guessing.")
-                length_int = None
         else:
             guessed_password, time_taken, avg_time_per_char, avg_time_per_length = track_and_record_guess_time(
                 target_password)
@@ -189,6 +176,7 @@ def main(action: str, length: str = DEFAULT_LENGTH, target_password: str = None)
 
 
 if __name__ == "__main__":
+    print(f"Command line arguments: {sys.argv}")
     _action = ''
     _length = ''
     _target_password = ''
@@ -197,8 +185,6 @@ if __name__ == "__main__":
             _action = ACTION_GUESS
             if len(sys.argv) > 2:
                 _target_password = sys.argv[2]
-            if len(sys.argv) > 3:
-                _length = sys.argv[3]
         elif sys.argv[1] == '-g' or sys.argv[1] == '--generate':
             _action = ACTION_GENERATE
             if len(sys.argv) > 2:
