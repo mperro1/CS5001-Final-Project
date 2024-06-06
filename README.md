@@ -1,4 +1,4 @@
-# Radix Sort Analysis 
+# Password Generator - Strength Analysis
 
 * Student Name: Marcela Perro
 * Github Username: mperro1
